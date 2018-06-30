@@ -7,7 +7,22 @@
     <li class="breadcrumb-item active" aria-current="page">Download</li>
   </ol>
 </nav>
-<div class="container-fluid">
+
+<div class="row m-4">
+
+
+<div class="col-sm-4 rounded">
+		<div class="container jumbotron ">
+      <p><b>DATED-</b><%=resultPost.created.toDateString()%></p>
+      <p><b>SUBJECT-</b><%=resultPost.subject%></p>
+      <p><b>TITLE-</b><%=resultPost.title%></p>
+      <p><b>CODE-</b><%=resultPost.code%></p>
+      <p><b>PAGES-</b><%=resultPost.pages%></p>
+      	</div>
+    </div>
+    
+    
+  <div class="col-sm-4">  
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
 -    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -33,35 +48,18 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
+    </div>
 </div>
-    <div class="col-sm-8">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-4 rounded">
-		<div class="container jumbotron ">
-      <p><b>DATED-</b><%=resultPost.created.toDateString()%></p>
-      <p><b>SUBJECT-</b><%=resultPost.subject%></p>
-      <p><b>TITLE-</b><%=resultPost.title%></p>
-      <p><b>CODE-</b><%=resultPost.code%></p>
-      <p><b>PAGES-</b><%=resultPost.pages%></p>
-      	</div>
-    </div>
-          <div class="col-sm-4">
-          </div>
-          <div class="col-sm-4">
-            <img src="http://www.medef-idf.fr/wp-content/uploads/2018/03/application-pdf.png" class="rounded mx-auto d-block img-thumbnail" alt="...">
-          </div>
-          <div class="col-sm-4">
-          </div>
-        </div>
-      </div>
-      <div class="container mt-4 mb-3 text-center">
-          <button class="btn btn-success">Purchase</button>
-          <a class="btn btn-outline-info" href="/home/<%=resultPost._id %>/download">Download Pdf</a>
-          <button class="btn btn-danger" disabled="disable">Share</button>
-      </div>
-    </div>
-  </div>
+          
+	<div class="col-sm-4">
+      	<img src="http://www.medef-idf.fr/wp-content/uploads/2018/03/application-pdf.png" class="rounded mx-auto d-block img-thumbnail" alt="...">
+      		<div class="container mt-5 text-center bg-light p-4 rounded">
+         		 <button class="btn btn-success btn-sm mt-2">Purchase</button>
+          		<a class="btn btn-outline-info btn-sm mt-2" href="/home/<%=resultPost._id %>/download">Download Pdf</a>
+         		 <button class="btn btn-danger btn-sm mt-2" disabled="disable">Share</button>
+      		</div>
+   	 </div>
+</div>
 <div class="jumbotron">
    	<div class="container bg-light rounded py-4">
   		<div class="row">
