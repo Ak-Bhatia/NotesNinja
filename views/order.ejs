@@ -1,0 +1,44 @@
+<% include partials/header %>
+<div class="container mt-5">
+  <h4 class="mobile"><i class="fa fa-comments-o mr-3" aria-hidden="true"></i>SWIPE THE TABLE TO SEE ALL CONTENTS</h4>
+<div class="table-wrapper">
+<table class="table table-responsive">
+  <thead class="thead table-hover text-white">
+    <tr class="bg-info">
+      <th scope="col">CODE</th>
+      <th scope="col">PAYMENT ID</th>
+      <th scope="col">SECRET CODE</th>
+      <th scope="col">STATUS</th>
+      <th scope="col">Click After Collecting Notes</th>
+    </tr>
+  </thead>
+  <tbody class="text-white">
+      <%user.orders.forEach(function(element){%>
+     <tr class="<%if(element.status){%>bg-success<%}else{%>bg-danger<%}%>">
+      <td><%=element.code%></td>
+      <td><%=element.paymentId%></td>
+      <td><%if(element.status){%>
+          <%=element.message%>
+          <%}else{%>
+          pending<%}%>
+      </td>
+      <td><%if(element.status){%>
+          ready
+          <%}else{%>
+          not ready<%}%></td>
+          <td>
+            <form action="/orders/<%=element._id%>?_method=DELETE" method="POST">
+              <input type="submit" class="btn" value="Received" <%if(!element.status){%>disabled<%}%>>
+            </form>
+          </td>
+    </tr>
+    <%})%>
+    
+  </tbody>
+</table>
+</div>
+<%if(user.orders.length<1){%>
+    <h3>No Orders Pending</h3>
+    <%}%>
+</div>
+<% include partials/footer %>

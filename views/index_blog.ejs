@@ -1,0 +1,29 @@
+<% include partials/blog_header %>
+
+
+
+<nav aria-label="breadcrumb mt-0">
+  <ol class="breadcrumb mb-0 border">
+    <li class="breadcrumb-item"><a href="Home.html">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Blog</li>
+  </ol>
+</nav>
+<div class="container">
+ 	<h1 class="display-3 text-center font-google1">CESS BLOG</h1>
+	<div class="jumbotron">
+<div class="row">
+	<% blogs.forEach(function(blog){ %>
+	 <div class="card col-md-5 mb-4 py-4 ml-4 mr-2">
+    <img class="card-img-top img-fluid" src="<%= blog.image %>" alt="Card image" style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title"><%= blog.title %></h4>
+      <p class="card-text"><%= blog.body.substring(0,30) %>....</p>
+      <a href="/blogs/<%=blog._id %>" class="btn btn-primary">READ MORE</a>
+    </div>
+	</div>
+	<% }); %>
+	</div>
+    
+  </div>
+</div>
+<% include partials/footer %>

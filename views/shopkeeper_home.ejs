@@ -1,0 +1,101 @@
+<% include ./partials/header %>
+
+<!-- 1st table -->
+<div class="container mt-5 mb-5">
+	<form class="mt-2 mb-2 form-inline custom-5"  action="/shopkeeper" method="GET">
+    <input class="form-control mr-sm-2" type="search" placeholder="enter the code" name="search" aria-label="Search">
+    <button class="btn btn-warning my-2 my-sm-0" type="submit">Search Code</button>
+</form>
+	<h4 class="mobile"><i class="fa fa-comments-o mr-3" aria-hidden="true"></i>SWIPE THE TABLE TO SEE ALL CONTENTS</h4>
+	<div class="table-wrapper">
+	<table class="table table-striped table-hover table-responsive">
+		<tr class="bg-info text-center"><th>Price Set Pending</th></tr>
+	</table>
+	</div>
+	<div class="table-wrapper">
+	<table class="table table-hover table-striped table-responsive">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">Code No.</th>
+	      <th scope="col">Title</th>
+				<th scope="col">Date Created</th>
+				<th scope="col">Subject</th>
+				<th scope="col">Download</th>
+				<th scope="col">Pages</th>
+				<th scope="col">Set Price</th>
+	     </tr>
+	  </thead>
+	  <tbody>
+	  	<%var count = 1%>
+	  	<%infoPending.forEach(function(element){%>
+        <tr>
+        	<th scope="row"><%=count%></th>
+        	<td><%=element.code%></td>
+        	<td><%=element.title.toUpperCase();%></td>
+					<td><%=element.created.toDateString()%></td>
+					<td><%=element.subject.toUpperCase()%></td>
+					<td><a href="/home/<%=element._id %>/download">Download Pdf</a></td>
+					<td><%=element.pages%></td>
+					<td><a href="/shopkeeper/<%=element._id%>">Set Price</a></td>
+
+
+           <%count+=1%>
+	    </tr>
+        <%})%>
+
+	  </tbody>
+	</table>
+	</div>
+</div>
+
+<!-- 2nd table -->
+
+<div class="container mt-5 mb-5">
+	<h4 class="mobile"><i class="fa fa-comments-o mr-3" aria-hidden="true"></i>SWIPE THE TABLE TO SEE ALL CONTENTS</h4>
+	<div class="table-wrapper">
+	<table class="table table-striped table-hover table-responsive">
+		<tr class="bg-info text-center"><th>Price SET Done</th></tr>
+	</table>
+</div>
+<div class="table-wrapper">
+	<table class="table table-hover table-striped table-responsive">
+	  <thead>
+	    <tr>
+				<th scope="col">#</th>
+	      <th scope="col">Code No.</th>
+	      <th scope="col">Title</th>
+				<th scope="col">Date Created</th>
+				<th scope="col">Subject</th>
+				<th scope="col">Download</th>
+				<th scope="col">Pages</th>
+				<th scope="col">Edit Price</th>
+	     </tr>
+	  </thead>
+	  <tbody>
+	  	<%var count = 1%>
+	  	<%infoDone.forEach(function(element){%>
+        <tr>
+					<th scope="row"><%=count%></th>
+        	<td><%=element.code%></td>
+        	<td><%=element.title.toUpperCase();%></td>
+					<td><%=element.created.toDateString()%></td>
+					<td><%=element.subject.toUpperCase()%></td>
+					<td><a href="/home/<%=element._id %>/download">Download Pdf</a></td>
+					<td><%=element.pages%></td>
+					<td><a href="/shopkeeper/<%=element._id%>/edit">Edit Price</a></td>
+           <%count+=1%>
+	    </tr>
+        <%})%>
+
+	  </tbody>
+	</table>
+</div>
+<%if(noMatch !== null){%>
+  <h4 class="text-center"><%=noMatch%></h4>
+  <%}%>
+</div>
+
+
+
+<% include ./partials/footer %>

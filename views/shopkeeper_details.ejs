@@ -1,0 +1,20 @@
+<% include partials/header %>
+
+
+<div class="container p-5">
+	<div class="jumbotron">
+	  <h1 class="display-4 text-center"><strong>Sign up</strong></h1>
+	  
+	  <form action="/shopkeeper/<%=currentUser._id%>/details" method="POST">
+	    <input type="text" placeholder="Name" name="name" class="form-control mt-5" required>
+	    <input type="text" placeholder="Address" name="address" class="form-control mt-3" required>
+	    <input type="number" placeholder="Paytm number" name="paytm" class="form-control mt-3" required>
+	    <div class="text-center mt-3">
+		    <button  class="btn btn-dark center ml-auto">Submit</button>
+        </div>
+     </form>
+	</div>
+</div>
+
+
+<% include partials/footer %>

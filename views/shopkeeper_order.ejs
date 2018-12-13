@@ -1,0 +1,48 @@
+<% include partials/header %>
+
+ <div class="row">
+    <div class="col-md-12">
+    <div class="bg-img">
+      <h2 class="mt-2 p-2 text-light">Notes To Be Printed :</h2>
+    </div>
+    <div class="container">
+         <h4 class="mobile"><i class="fa fa-comments-o mr-3" aria-hidden="true"></i>SWIPE THE TABLE TO SEE ALL CONTENTS</h4>
+     </div>
+    <div class="table-wrapper">
+        <table class='table table-striped table-responsive'>
+            <thead >
+                <tr>
+                    <th class="font-weight-bold" >S.No</th>
+                    <th>Code</th>
+                    <th>No. of <br>copies</br></th>
+                    <th>Secret message</th>
+                    <th>Username</th>
+                    <th>Click when ready</th>
+                </tr>
+            </thead>
+            <tbody>
+            <%user.orders.forEach(function(element,index){%>
+                <%if(!element.status){%>
+                <tr>
+                    <td class="font-weight-bold"><%=index+1%></td>
+                    <td><<%=element.code%></td>
+                    <td><%=element.copies%></td>
+                    <td><%=element.message%></td>
+                    <td><%=element.username%></td>
+                    
+                    <td><form action="/orders/edit/<%=element._id%>?_method=PUT" method="POST"  onSubmit="return verify()">
+                        <button class="btn btn-danger">Printed</button>
+                        </form></td>
+                </tr>
+                <%}%>
+            <%})%>
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+<%if(user.orders.length<1){%>
+    <h3>No Orders Pending</h3>
+    <%}%>
+</div>
+<% include partials/footer %>

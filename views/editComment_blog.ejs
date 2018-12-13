@@ -1,0 +1,10 @@
+<% include partials/header %>
+<form action="/blogs/<%=post_id%>/comment/<%=comment._id%>?_method=PUT" method="POST" class="mt-5">
+    <div class="container">
+        <div class="form-group form-check-inline w-100">
+            <input type="text" placeholder="Comment" name="comment[text]" value="<%=comment.text%>" class="form-control" required>
+            <button class="btn  btn-primary">SUBMIT</button>
+        </div>
+    </div>
+</form>
+<% include partials/footer %>

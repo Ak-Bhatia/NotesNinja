@@ -1,0 +1,64 @@
+<% include partials/header %>
+<div class="bg6">
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mb-0 border">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/home">Materials</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Notes</li>
+  </ol>
+</nav>
+
+	<!--Codes-->
+<div class="container mt-5" >
+<!--   <h2>Codes</h2>
+  <strong>Your Helping Hand</strong>
+  <hr>
+  <p>Please check from the following codes: </p>
+ -->
+ <%if(currentUser){%>
+ <%if(currentUser.isShopkeeper){%>
+    <a href="/shopkeeper" class="btn btn-primary btn-lg mb-5">Go To Price Set Page</a>
+    <%}%>
+ <%}%>
+  <div class="jumbotron text-center">
+    <h1 class="display-4 font-google1" data-entrance="fade">Notes Ninja</h1>
+    <strong>Your Helping Hand</strong>
+    <hr> 
+  </div>
+  <div class='card-body text-white text-center'>
+    <p class='card-text'>Total codes available: <strong><%=posts.length%></strong></p>
+  </div>
+  <p class="text-white py-3 text-center">Please check from the following codes: </p>
+  <table class="table table-striped table-hover bg-light">
+    <thead>
+      <tr class="bg-info">
+        <th>Code</th>
+        <th>Subject</th>
+        <th>More Info</th>
+      </tr>
+    </thead>
+    <tbody>
+          <%  posts.reverse().forEach(function(post,index){ %>
+      <tr data-entrance="from-left">
+        <td><%=post.code%></td>
+        <td><%=post.subject.toUpperCase()%></td>
+        <td><a href="/home/<%= post._id %>">Full details</a></td>
+      </tr>
+    <%  }) %>
+    <tr>
+      <td><a href="/home/new">+ Upload</a></td>
+      <td><a href="/home/new">+ Upload</a></td>
+      <td><a href="/home/new">+ Upload</a></td>
+    </tr>
+        
+    </tbody>
+  </table>
+  <%if(noMatch !== null){%>
+  <h4 class="text-center"><%=noMatch%></h4>
+  <%}%>
+</div>
+<div style="height:100px;"></div>
+</div>
+  <script type="text/javascript">(function(t,e){var r=function(t){try{var r=e.head||e.getElementsByTagName("head")[0];a=e.createElement("script");a.setAttribute("type","text/javascript");a.setAttribute("src",t);r.appendChild(a);}catch(t){}};t.CollectId = "5b4a3c158bf4fb5a61f43cb9";r("https://collectcdn.com/launcher.js");})(window,document);</script>
+    <% include partials/footer %>
